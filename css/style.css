@@ -1,0 +1,122 @@
+#carusel {
+	position: relative;
+	height: 400px;
+	width: 800px;
+	display: flex;
+	margin: 0 auto;
+	overflow: hidden;
+}
+
+ul {
+	list-style: none;
+	display: inline-flex;
+	height: 400px;
+	width: 800px;
+	margin: 0;
+	padding: 0;
+}
+
+#carusel .glyphicon {
+	color: black;
+}
+
+#carusel .glyphicon-menu-left{
+	position: absolute;
+	display: block;
+	top: calc(50% - 10px);
+	left: 20px;
+	font-size: 40px;
+}
+/*Shadow arrow start*/
+#carusel .rectangle {
+	background-color: none;
+}
+
+#carusel .rectangle-left {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 10%;
+}
+
+#carusel .rectangle-right {
+	position: absolute;
+	top: 0;
+	right: 0;
+	height: 100%;
+	width: 10%;
+}
+
+#carusel .rectangle .glyphicon-menu-right {
+	position: absolute;
+	display: block;
+	top: calc(50% - 10px);
+	right: 20px;
+	font-size: 40px;
+}
+
+#carusel .rectangle .glyphicon:hover {
+	cursor: pointer;
+	color: blue;
+}
+
+/*Shadow arrow end*/
+
+li {
+	height: 400px;
+	width: 800px;
+}
+
+img {
+	height: 400px;
+	width: 800px;
+}
+
+#carusel .pagination {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	position: absolute;
+	background-color: rgba(0, 0, 0, 0.1);
+	border: 2px solid rgba(0, 0, 0, 0);
+	top : 360px;
+	left: calc(50% - 110px);
+	height: 40px;
+	width: 220px;
+	margin: 0 auto;
+}
+
+#carusel .pagination .ball {
+	display: inile-flex;
+	padding: 2px;
+	width: 20px;
+	height: 20px;
+	border: 2px solid rgba(0, 0, 0, 0.5);
+	border-radius: 50%;
+
+}
+
+#carusel .pagination:hover{
+	border: 2px solid rgba(0, 0, 0, 0.6);
+	background-color: rgba(0, 0, 0, 0.4);
+}
+
+#carusel .pagination:hover .ball {
+	//background-color: rgba(1, 1, 1, 0.2);
+}
+
+#carusel .pagination .ball:hover {
+	border: 2px solid rgba(85, 70, 248, 0.89);
+	background-color: rgba(1, 1, 1, 0.5);
+	cursor: pointer;
+}
+
+#carusel .rectangle:hover {
+	background-color: rgba(1, 1, 1, 0.4);
+}
+
+.active {
+	border: 2px solid rgba(85, 70, 248, 0.89) !important;
+	background-color: rgba(85, 70, 248, 0.89) !important;
+}
