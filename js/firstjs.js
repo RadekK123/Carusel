@@ -50,6 +50,46 @@ $(document).ready(function () {
     $paginationItems.click(function(e) {
         e.preventDefault();
         var $this = $(this);
+
+        var index = $this.index();
+        console.log(index);
+        var newPost = (index* -800);
+        var self = $this;
+
+        console.log('Odpala');
+        self.addClass('active');
+        var activeLi = $('.active');
+        var nextLi = self.next();
+        var prevLi = self.prev();
+
+        
+            nextLi.click(function(e) {
+            e.preventDefault();
+            console.log('Benk');
+            activeLi.removeClass('active');
+            nextLi.addClass('active');
+            });   
+
+            prevLi.click(function(e) {
+            e.preventDefault();
+            console.log('Bach');
+            activeLi.removeClass('active');
+            prevLi.addClass('active');      
+            });  
+     
+
+        carusel.animate({'margin-left' : (newPost + 'px')}, 'slow');
+    });
+
+   //var Interval = setInterval(moveright, 5500);
+
+});
+
+
+/*
+            
+ e.preventDefault();
+        var $this = $(this);
         $pagination.find('div').removeClass('active');
         $this.addClass('active');
     
@@ -57,9 +97,9 @@ $(document).ready(function () {
         var newPost = (index* -800);
 
         carusel.animate({'margin-left' : (newPost + 'px')}, 'slow');
-    });
 
-    setInterval(moveright, 5500);
 
-});
+
+
+*/
 
