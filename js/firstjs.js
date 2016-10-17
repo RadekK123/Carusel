@@ -1,4 +1,3 @@
-
 $(document).ready(function () {
 
     var carusel = $('#carusel ul');
@@ -19,8 +18,6 @@ $(document).ready(function () {
         carusel.css({ marginLeft: '-800px'});
     }
 
-    // Arrow scrolls
-
     var leftArrow = $('#carusel .rectangle .glyphicon-menu-left');
     var rightArrow = $('#carusel .rectangle .glyphicon-menu-right');
 
@@ -28,78 +25,60 @@ $(document).ready(function () {
     rightArrow.click(moveright);
 
     function moveright () {
-        var conf = {
-            marginLeft : '-800px'
-        };
-        carusel.animate(conf, 1000, moveFirstSlide);
+        
+        var activeBall = $('.active');
+        var nextBall = activeBall.next();
+
+        var Interval;
+        if (!nextBall[0]) {
+            
+            var firstBall = $('.pagination .ball:first');
+            var lastBall = $('.pagination .ball:last');
+
+            firstBall.removeClass('active');
+            firstBall.click();
+        } else {
+            nextBall.click();
+        }
     }
 
     leftArrow.click(moveleft);
 
-    function moveleft (){
-        var conf = {
-            marginLeft : '0px'
-        };
-        moveLastSlide();
-        carusel.animate(conf, 1000);
+    function moveleft () {
+    var activeBall = $('.active');
+
+        var prevBall = activeBall.prev();
+        if (!prevBall[0]) {
+            
+            var firstBall = $('.pagination .ball:first');
+            var lastBall = $('.pagination .ball:last');
+
+            lastBall.click();
+            
+        } else {
+            prevBall.click();
+        }
     }
 
     var $pagination = $('.pagination');
     var $paginationItems = $pagination.find('div');
+
 
     $paginationItems.click(function(e) {
         e.preventDefault();
         var $this = $(this);
 
         var index = $this.index();
-        console.log(index);
         var newPost = (index* -800);
-        var self = $this;
 
-        console.log('Odpala');
-        self.addClass('active');
-        var activeLi = $('.active');
-        var nextLi = self.next();
-        var prevLi = self.prev();
+        $('.ball').each(function(index, element) {
+            $(element).removeClass('active');
+        });
 
-        
-            nextLi.click(function(e) {
-            e.preventDefault();
-            console.log('Benk');
-            activeLi.removeClass('active');
-            nextLi.addClass('active');
-            });   
-
-            prevLi.click(function(e) {
-            e.preventDefault();
-            console.log('Bach');
-            activeLi.removeClass('active');
-            prevLi.addClass('active');      
-            });  
-     
-
+        $this.addClass('active');
         carusel.animate({'margin-left' : (newPost + 'px')}, 'slow');
+        
     });
 
-   //var Interval = setInterval(moveright, 5500);
-
+    var Interval = setInterval(moveright, 5500);
 });
-
-
-/*
-            
- e.preventDefault();
-        var $this = $(this);
-        $pagination.find('div').removeClass('active');
-        $this.addClass('active');
-    
-        var index = $this.index();
-        var newPost = (index* -800);
-
-        carusel.animate({'margin-left' : (newPost + 'px')}, 'slow');
-
-
-
-
-*/
-
